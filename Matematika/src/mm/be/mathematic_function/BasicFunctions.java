@@ -22,3 +22,7 @@ public class BasicFunctions {
         return (double)firstInputNumber / secondInputNumber;
     }
 }
+
+
+
+

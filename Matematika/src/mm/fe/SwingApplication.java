@@ -11,7 +11,6 @@ public class SwingApplication {
     private JPanel buttonsPanel;
     private JTextField output;
     private int firstNumber;
-    private int secondNumber;
     private String mark = "";
 
     public void createBasicWindow() {
@@ -37,11 +36,11 @@ public class SwingApplication {
     }
 
     private void addOutput() {
-        output = new JTextField();
+        output = new JTextField("0");
         output.setSize(438, 77);
         outputPanel.add(output);
         output.setFont(new Font("Arial", Font.BOLD, 46));
-        output.setHorizontalAlignment(JTextField.RIGHT);
+        output.setHorizontalAlignment(SwingConstants.RIGHT);
     }
 
     private void addFunctionButtons() {
@@ -92,7 +91,7 @@ public class SwingApplication {
 
 
         } else if (buttonText.equals("=")) {
-            secondNumber = Integer.parseInt(output.getText());
+            int secondNumber = Integer.parseInt(output.getText());
             final BasicFunctions basicFunctions = new BasicFunctions();
             int result = 0;
             if (mark.equals("+")) {
@@ -119,9 +118,13 @@ public class SwingApplication {
     }
 
     private void addInToDisplay(String buttonText) {
-        output.setText(output.getText() + buttonText);
+        if (!output.getText().contains(".") || !buttonText.equals(".")) {
+            output.setText(output.getText() + buttonText);
 
 //        output.setText(output.getText()+((JButton)evt.getSource()).getText()); Toto je to samé jako 3 řádky nad tím a pouze je to napsané v jednom řádku
+
+        }
+
 
     }
 
